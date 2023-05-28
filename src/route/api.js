@@ -2,13 +2,19 @@
 const express = require('express')
 const jwt = require('jsonwebtoken')
 let productsCtrl = require('../controller/user/userControllers');
+let medicinCtrl = require('../controller/medicine/medicineController');
+let notificationCtrls = require('../controller/notification/notificationController');
 const route = express.Router();
 const verifyToken = require('../../jwt/auth')
 
 
-route.get('/user',verifyToken,productsCtrl.get)
+route.post('/user',productsCtrl.get)
+route.post('/register',productsCtrl.register)
 route.delete('/logout',verifyToken,productsCtrl.logout)
 
+route.post('/listPre',medicinCtrl.getListMedicine);
 
+route.post('/listNoti',notificationCtrls.getListNotification);
+route.post("/datlich",medicinCtrl.datlich);
 
 module.exports = route

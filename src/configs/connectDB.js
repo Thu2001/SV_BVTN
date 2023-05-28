@@ -6,8 +6,8 @@ console.log("Creating connection pool...");
 const db = mysql.createPool({
     host: 'localhost',
     user: 'root',
-    database: 'dbmovie',
-    // password: 'password'
+    database: 'db_healthmanagerment',
+    password: '12345'
 })
 
 module.exports = db

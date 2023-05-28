@@ -78,6 +78,18 @@ app.post('/token',async (req,res)=>{
 
 })
 
+app.post('/register',async(req,res)=>{
+        const Account = req.Account;
+        const Password = req.Password;
+        console.log(req.Account);
+        console.log(Password);
+        const[rows,fields]= await db.execute("INSERT INTO user (Account, Password) VALUES (?,?)",[Account,Password]);
+        return res.status(200).json({
+            message:'ok',
+            data:rows
+        })
+})
+
 app.use(function(req, res) {
     res.status(404).send({url: req.originalUrl + ' not found'})
 })
