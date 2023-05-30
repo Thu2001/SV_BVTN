@@ -34,6 +34,27 @@ const register = async (req, res) => {
         data:rows
     })
 }
+const updateUser = async (req, res) => {
+
+    const Account = req.body.Account;
+    const userName = req.body.userName;
+    const Phone = req.body.userPhone;
+    const age = req.body.age;
+    const userDate = req.body.userDate;
+    const userJob = req.body.userJob;
+    const userAddress = req.body.userAddress;
+    const userHeight = req.body.userHeight;
+    const userWeight = req.body.userWeight;
+    const tieusu = req.body.tieusu;
+    const benhly = req.body.benhly;
+    
+    const[rows,fields]= await db.execute("UPDATE user SET userName =?, age = ?, userDate =?,userJob=?,userAddress=?,userHeight=?,userWeight=?,tieusu=?,benhly=?,userPhone=? WHERE Account = ?;",
+    [userName,age,userDate,userJob,userAddress,userHeight,userWeight,tieusu,benhly,Phone,Account]);
+    return res.status(200).json({
+        message:'ok',
+        data:rows
+    })
+}
 module.exports = {
-    get,logout,register
+    get,logout,register,updateUser
 }

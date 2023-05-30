@@ -11,6 +11,7 @@ const verifyToken = require('../../jwt/auth')
 route.post('/user',productsCtrl.get)
 route.post('/register',productsCtrl.register)
 route.delete('/logout',verifyToken,productsCtrl.logout)
+route.post('/update',productsCtrl.updateUser);
 
 route.post('/listPre',medicinCtrl.getListMedicine);
 
