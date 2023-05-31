@@ -23,7 +23,15 @@ const getListMedicine = async (req, res) => {
             data:rows
         })
     }
-
+    const getmedicune = async (req, res) => {
+        const codeT = req.body.codeT;
+        console.log(codeT);
+        const[rows,fields]= await db.execute('SELECT * FROM medicine where codeT=?',[codeT])
+        return res.status(200).json({
+            message:'ok',
+            data:rows
+        })
+    }
 module.exports = {
-    getListMedicine,datlich
+    getListMedicine,datlich,getmedicune
 }
