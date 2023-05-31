@@ -23,8 +23,9 @@ const getListMedicine = async (req, res) => {
         })
     }
     const datlich = async (req, res) => {
+        const faculty = req.body.faculty;
         const putDate = req.body.putDate;
-        const[rows,fields]= await db.execute('INSERT  db_healthmanagerment.calendar (putDate) VALUES (?)',[putDate])
+        const[rows,fields]= await db.execute('INSERT  db_healthmanagerment.calendar (putDate,faculty) VALUES (?,?)',[putDate,faculty])
         return res.status(200).json({
             message:'ok',
             data:rows
