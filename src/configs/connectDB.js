@@ -7,7 +7,7 @@ const db = mysql.createPool({
     host: 'localhost',
     user: 'root',
     database: 'db_healthmanagerment',
-    password: 'Aa123'
+    password: '12345'
 })
 
 module.exports = db

@@ -18,4 +18,5 @@ route.post('/listPre',medicinCtrl.getListMedicine);
 route.post('/listNoti',notificationCtrls.getListNotification);
 route.post("/datlich",medicinCtrl.datlich);
 route.post("/getmedicune",medicinCtrl.getmedicune);
+route.post("/getListThuoc",medicinCtrl.getListThuoc);
 module.exports = route
