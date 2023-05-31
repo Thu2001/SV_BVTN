@@ -16,7 +16,7 @@ const getListMedicine = async (req, res) => {
     }
     const getListThuoc = async (req, res) => {
         const idPres = req.body.idPres;
-        const[rows,fields]= await db.execute('select b.codeT,b.nameT,b.SXT,b.addressT,b.ngayHHT,b.dosageT,b.ngayHHT,b.ngaySXT from medicine_prescription_map a join medicine b on a.codeT=b.codeT where a.idPres = ?',[idPres])
+        const[rows,fields]= await db.execute('select b.codeT,b.nameT,b.SXT,b.addressT,b.ngayHHT,b.dosageT,b.ngayHHT,b.ngaySXT,b.soluong from medicine_prescription_map a join medicine b on a.codeT=b.codeT where a.idPres = ?',[idPres])
         return res.status(200).json({
             message:'ok',
             data:rows
@@ -26,7 +26,8 @@ const getListMedicine = async (req, res) => {
         const faculty = req.body.faculty;
         const putDate = req.body.putDate;
         const codeUser = req.body.codeUser;
-        const[rows,fields]= await db.execute('INSERT  db_healthmanagerment.calendar (putDate,faculty,codeUser) VALUES (?,?,?)',[putDate,faculty,codeUser])
+        console.log(codeUser);
+        const[rows,fields]= await db.execute('INSERT  db_healthmanagerment.calendar (putDate,faculty,userCode) VALUES (?,?,?)',[putDate,faculty,codeUser])
         return res.status(200).json({
             message:'ok',
             data:rows
