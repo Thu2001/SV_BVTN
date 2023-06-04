@@ -1,8 +1,8 @@
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
-const QRCode = require('qrcode');
-var qr = require('qr-image');
+// const QRCode = require('qrcode');
+// var qr = require('qr-image');
 const port = process.env.PORT || 3000
 
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -16,11 +16,11 @@ app.use(bodyParser.json())
 //     return res.send(img);
 // });
 
-app.get('/qr', function(req,res){
+// app.get('/qr', function(req,res){
     
-    console.log(qr.image('tins ddep trai', { type: 'png' }).pipe(res).originalUrl);
+//     console.log(qr.image('tins ddep trai', { type: 'png' }).pipe(res).originalUrl);
 
- })
+//  })
 
 let routes = require('./src/route/api') //importing route
 app.use("/api", routes)

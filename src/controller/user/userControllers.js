@@ -23,10 +23,9 @@ const logout = async(req,res) =>{
         })
 }
 const register = async (req, res) => {
-    const id = Math.floor(Math.random() * (999999 - 100000 + 1) ) + 100000;
-    const maBN = "MABN" + id;
     const Account = req.body.Account;
     const Password = req.body.Password;
+    const maBN = "MABN" + Account;
     console.log(maBN);
     console.log(req.Account);
     console.log(Password);
