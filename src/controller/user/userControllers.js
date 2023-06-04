@@ -29,7 +29,7 @@ const register = async (req, res) => {
     console.log(maBN);
     console.log(req.Account);
     console.log(Password);
-    const[rows,fields]= await db.execute("INSERT INTO user (Account, Password,codeinfouser) VALUES (?,?)",[Account,Password,maBN]);
+    const[rows,fields]= await db.execute("INSERT INTO user (Account, Password,codeinfouser) VALUES (?,?,?)",[Account,Password,maBN]);
     return res.status(200).json({
         message:'ok',
         data:rows

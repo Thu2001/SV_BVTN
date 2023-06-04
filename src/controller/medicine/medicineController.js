@@ -7,13 +7,13 @@ require('dotenv').config()
 
 const getListMedicine = async (req, res) => {
         const Account = req.body.Account;
-        console.log(Account);
         const[rows,fields]= await db.execute('select a.namePres, a.putDate, a.status,a.idPres from  db_healthmanagerment.prescription a  where a.userCode = ?',[Account])
         return res.status(200).json({
             message:'ok',
             data:rows
         })
     }
+
     const getListThuoc = async (req, res) => {
         const idPres = req.body.idPres;
         const[rows,fields]= await db.execute('select b.codeT,b.nameT,b.SXT,b.addressT,b.ngayHHT,b.dosageT,b.ngayHHT,b.ngaySXT,b.soluong from medicine_prescription_map a join medicine b on a.codeT=b.codeT where a.idPres = ?',[idPres])
