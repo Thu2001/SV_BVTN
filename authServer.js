@@ -33,14 +33,14 @@ app.post('/login',async (req,res)=>{
     const Password = req.body.Password;
 
     if(!Account){
-        return res.status(401).json({
-            message:' Vui lòng nhập tài khoản'
+        return res.status(200).json({
+            message:'Vui lòng nhập tài khoản'
         })
     }
 
     if(!Password){
-        return res.status(401).json({
-            message:' Vui lòng nhập mật khẩu'
+        return res.status(200).json({
+            message:'Vui lòng nhập mật khẩu'
         })
     }
 
@@ -48,8 +48,8 @@ app.post('/login',async (req,res)=>{
 
     console.log(rows);
     if(rows.length===0){
-        return res.status(401).json({
-            message:'not found'
+        return res.status(200).json({
+            message:'Tài khoản hoặc mật khẩu không chính xác'
         }    
         )
     }
@@ -57,7 +57,8 @@ app.post('/login',async (req,res)=>{
     updateRefreshToken(Account,token.refreshToken)
     return res.status(200).json({
         message:'ok',
-        token
+        token,
+        data:rows
     })
 })
 
