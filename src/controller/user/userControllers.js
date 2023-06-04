@@ -23,12 +23,14 @@ const logout = async(req,res) =>{
         })
 }
 const register = async (req, res) => {
-       
+    const id = Math.floor(Math.random() * (999999 - 100000 + 1) ) + 100000;
+    const maBN = "MABN" + id;
     const Account = req.body.Account;
     const Password = req.body.Password;
+    console.log(maBN);
     console.log(req.Account);
     console.log(Password);
-    const[rows,fields]= await db.execute("INSERT INTO user (Account, Password) VALUES (?,?)",[Account,Password]);
+    const[rows,fields]= await db.execute("INSERT INTO user (Account, Password,codeinfouser) VALUES (?,?)",[Account,Password,maBN]);
     return res.status(200).json({
         message:'ok',
         data:rows
